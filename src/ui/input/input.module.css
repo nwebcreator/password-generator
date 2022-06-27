@@ -1,0 +1,13 @@
+.input {
+    min-height: 62px;
+    line-height: 62px;
+    width: calc(100% - 56px);
+    border-radius: none;
+    /*outline: none; */
+    padding: 0 10px;
+    color: #999;
+    margin-right: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px 4px rgba(0 0 0 0.1);
+    font-size: 24px;
+}
