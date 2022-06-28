@@ -6,8 +6,8 @@ import { Checkbox } from '../../ui/chechbox/checkbox';
 import { Button } from '../../ui/button/button';
 
 function PasswordGenerator() {
-    const charsGenerate = '0123456789abcdefghijklmnopqrstuvwxyzABCDFGHIJKLMNOPQRSTUVWXYZ';
-    const symbols = '!@#$%^&()\\_+?:{}[]';
+    const simpleChars = '0123456789abcdefghijklmnopqrstuvwxyzABCDFGHIJKLMNOPQRSTUVWXYZ';
+    const specialSymbols = '!@#$%^&()\\_+?:{}[]';
     const passwordLengthValues = [12, 13, 14, 15, 16];
 
     const [result, setResult] = React.useState('');
@@ -15,11 +15,10 @@ function PasswordGenerator() {
     const [isSymbolsUse, setIsSymbolsUse] = React.useState(false);
     const [isPasswordCopied, setIsPasswordCopied] = React.useState(false);
 
-    function handlePasswordGenerator() {
-        //let currentResult = '';
-        let allCharsGenerate = charsGenerate;
+    const handlePasswordGenerator = React.useCallback(() => {
+        let allCharsGenerate = simpleChars;
         if (isSymbolsUse) {
-            allCharsGenerate += symbols;
+            allCharsGenerate += specialSymbols;
         }
 
         const currentResult = Array.from({length: passwordLength}, () => {
@@ -28,22 +27,18 @@ function PasswordGenerator() {
         }).join('');
 
         setResult(currentResult);
-        // for (let i = 0; i < passwordLength; i += 1) {
-        //     const randomNumber = Math.floor(Math.random() * charsGenerate.length);
-        //     currentResult += charsGenerate.substring(randomNumber, randomNumber + 1);
-        // }
-        // setResult(currentResult);
-    }
+        setIsPasswordCopied(false);
+    }, [isSymbolsUse, passwordLength]);
 
-    function handleBlur (event) {
-        setPasswordLength(event.target.value);
-    }
+    const handleBlur = React.useCallback((evt) => {
+        setPasswordLength(evt.target.value);
+    }, []);
 
-    function handleSymbolsUse () {
+    const handleSymbolsUse = React.useCallback(() => {
         setIsSymbolsUse(!isSymbolsUse);
-    }
+    }, [isSymbolsUse]);
 
-    function handlePasswordCopy () {
+    const handlePasswordCopy = React.useCallback(() => {
         if (result) {
             let timerId = null;
             navigator.clipboard.writeText(result).then(() => {
@@ -54,7 +49,7 @@ function PasswordGenerator() {
                 }, 2000);
             });
         }
-    }
+    }, [result]);
 
     return (
         <div className={styles['root']}>
