@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import styles from './checkbox.module.css'
+import styles from './checkbox.module.css';
 
 function Checkbox({name, id, className, defaultChecked, onChange}) {
     return <input 
@@ -9,7 +9,7 @@ function Checkbox({name, id, className, defaultChecked, onChange}) {
     id={id} 
     className={cx(styles['checkbox'], className)} 
     defaultChecked={defaultChecked}
-    onChage={onChange}></input>
+    onChange={onChange}></input>
 }
 
 export { Checkbox }

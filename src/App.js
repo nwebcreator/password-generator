@@ -1,6 +1,6 @@
-import './App.css'
-import { PasswordGenerator } from './components/password-generator'
-import './App.css'
+import './App.css';
+import { PasswordGenerator } from './components/password-generator/password-generator';
+import './App.css';
 
 function App() {
   return (

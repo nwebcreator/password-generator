@@ -7,7 +7,7 @@ function Select ({options, onBlur}) {
         <select onBlur={onBlur} className={styles['select']}>
             {options && 
             options.map((option, index) => {
-                return <options key={index}>{option}</options>
+                return <option key={index}>{option}</option>
             })
         }</select>
     )
