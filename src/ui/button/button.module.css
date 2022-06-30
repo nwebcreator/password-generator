@@ -1,7 +1,9 @@
 .generate-button {
     min-height: 42px;
+    padding: 2px 15px;
     line-height: 42px;
-    background-color: #333;
+    /* background-color: #333; */
+    background-color: #1b1748;
     cursor: pointer;
     color: white;
     font-weight: 300;

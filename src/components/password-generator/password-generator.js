@@ -8,7 +8,7 @@ import { Button } from '../../ui/button/button';
 function PasswordGenerator() {
     const simpleChars = '0123456789abcdefghijklmnopqrstuvwxyzABCDFGHIJKLMNOPQRSTUVWXYZ';
     const specialSymbols = '!@#$%^&()\\_+?:{}[]';
-    const passwordLengthValues = [12, 13, 14, 15, 16];
+    const passwordLengthValues = [6, 8, 10, 12, 14, 16];
 
     const [result, setResult] = React.useState('');
     const [passwordLength, setPasswordLength] = React.useState(passwordLengthValues[0]);
@@ -52,11 +52,11 @@ function PasswordGenerator() {
     }, [result]);
 
     return (
-        <div className={styles['root']}>
+        <div className={styles['container']}>
             <h1 className={styles['title']}>Генератор паролей</h1>
-            <div className={styles['result']}>
+            <div className={styles['result-input']}>
                 <Input type='text' readonly={true} defaultValue={result}></Input>
-                <button className={styles['copy']} onClick={handlePasswordCopy}></button>
+                <button className={styles['copy-button']} onClick={handlePasswordCopy}></button>
                 {isPasswordCopied && <span className={styles['copied']}>Скопировано!</span>}
             </div>
             <div className={styles['option']}>
